@@ -10,11 +10,6 @@ public class Camel extends RouteBuilder {
     @Override
     public void configure() throws Exception {
         var url = StaticEndpointBuilders.aws2Sqs("test_test");
-        from(url).process(new Processor() {
-            @Override
-            public void process(Exchange exchange) throws Exception {
-                System.out.println(exchange.getMessage().getBody().toString());
-            }
-        });
+        from(url).to("file:/tmp/example");
     }
 }
