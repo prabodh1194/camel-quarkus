@@ -1,4 +1,4 @@
-package dev.pbd.camel;
+package dev.pbd.aws;
 
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.builder.endpoint.StaticEndpointBuilders;
@@ -8,7 +8,7 @@ import javax.enterprise.context.ApplicationScoped;
 
 
 @ApplicationScoped
-public class Camel extends RouteBuilder {
+public class FromSqs extends RouteBuilder {
     @ConfigProperty(name = "pbd.queue")
     String message;
 
