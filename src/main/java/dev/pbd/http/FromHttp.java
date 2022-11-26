@@ -8,6 +8,6 @@ public class FromHttp extends RouteBuilder {
     public void configure() throws Exception {
         from("netty-http://http://localhost:8888/greeting")
                 .log("recieved a request")
-                .setBody(simple("Hello, world!"));
+                .setBody(simple("[${date:now:yyyy-MM-dd'T'HH:mm:ss.SSSZ}] Hello, world!"));
     }
 }
