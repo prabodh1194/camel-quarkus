@@ -15,12 +15,13 @@ val quarkusPlatformVersion: String by project
 dependencies {
     implementation(enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}"))
     implementation(enforcedPlatform("${quarkusPlatformGroupId}:quarkus-camel-bom:${quarkusPlatformVersion}"))
-    implementation("org.apache.camel.quarkus:camel-quarkus-core")
-    implementation("org.apache.camel.quarkus:camel-quarkus-file")
-    implementation("org.apache.camel.quarkus:camel-quarkus-log")
     implementation("org.apache.camel.quarkus:camel-quarkus-aws2-sqs")
     implementation("org.apache.camel.quarkus:camel-quarkus-aws2-lambda")
     implementation("org.apache.camel.quarkus:camel-quarkus-aws2-s3")
+    implementation("org.apache.camel.quarkus:camel-quarkus-core")
+    implementation("org.apache.camel.quarkus:camel-quarkus-file")
+    implementation("org.apache.camel.quarkus:camel-quarkus-netty-http")
+    implementation("org.apache.camel.quarkus:camel-quarkus-log")
     implementation("io.quarkus:quarkus-arc")
     testImplementation("io.quarkus:quarkus-junit5")
 }
