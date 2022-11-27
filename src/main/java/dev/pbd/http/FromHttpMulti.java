@@ -1,7 +1,6 @@
 package dev.pbd.http;
 
-import org.apache.camel.Exchange;
-import org.apache.camel.Processor;
+import dev.pbd.GreetingData;
 import org.apache.camel.builder.RouteBuilder;
 
 public class FromHttpMulti extends RouteBuilder {
@@ -11,11 +10,12 @@ public class FromHttpMulti extends RouteBuilder {
 
         from("rest://post:greeting:/{me}").multicast()
                 .pipeline()
-                    .process(new Processor() {
-                        @Override
-                        public void process(Exchange exchange) throws Exception {
-                            var msg = exchange.getMessage();
-                        }
+                    .unmarshal()
+                    .json(GreetingData.class)
+                    .process(ex -> {
+                        var msg = ex.getMessage();
+                        var bod = msg.getBody(GreetingData.class);
+                        ex.getMessage().setBody(bod);
                     })
                     .to("log:spy")
                 .end()
