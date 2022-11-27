@@ -20,7 +20,7 @@ public class FromHttp extends RouteBuilder {
 
                         log.info((String) hdrs.get("me"));
                         log.info((String) hdrs.get("lang"));
-                        log.info((String) hdrs.getOrDefault("z", 10));
+                        log.info((String) hdrs.getOrDefault("z", "10"));
                     }
                 })
                 .log("received a request")
