@@ -1,6 +1,6 @@
 package dev.pbd.http;
 
-import dev.pbd.GreetingData;
+import dev.pbd.http.dto.GreetingData;
 import org.apache.camel.builder.RouteBuilder;
 
 public class FromHttpMulti extends RouteBuilder {
@@ -12,11 +12,6 @@ public class FromHttpMulti extends RouteBuilder {
                 .pipeline()
                     .unmarshal()
                     .json(GreetingData.class)
-                    .process(ex -> {
-                        var msg = ex.getMessage();
-                        var bod = msg.getBody(GreetingData.class);
-                        ex.getMessage().setBody(bod);
-                    })
                     .to("log:spy")
                 .end()
                 .pipeline()
