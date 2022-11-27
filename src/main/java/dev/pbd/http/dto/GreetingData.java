@@ -2,19 +2,21 @@ package dev.pbd.http.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.time.Instant;
 
-public class GreetingData {
+public class GreetingData implements Serializable {
     @JsonProperty("val")
     int val;
 
     @JsonProperty("cnt")
     int cnt;
 
-    Instant d;
+    @JsonProperty("last")
+    String d;
 
     public GreetingData() {
-        d = Instant.now();
+        d = Instant.now().toString();
     }
 
     @Override
@@ -23,6 +25,6 @@ public class GreetingData {
                 "val=" + val +
                 ", cnt=" + cnt +
                 ", d=" + d +
-                '}';
+                "}\n";
     }
 }

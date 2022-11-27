@@ -8,10 +8,10 @@ public class FromHttpMulti extends RouteBuilder {
     public void configure() throws Exception {
         restConfiguration().component("netty-http").host("localhost").port("8888");
 
-        from("rest://post:greeting:/{me}").multicast()
+        from("rest://post:greeting:/{me}").unmarshal().json(GreetingData.class).marshal().json(GreetingData.class)
+                .multicast()
                 .pipeline()
-                    .unmarshal()
-                    .json(GreetingData.class)
+                    .convertBodyTo(String.class)
                     .to("log:spy")
                 .end()
                 .pipeline()
