@@ -15,7 +15,6 @@ val quarkusPlatformVersion: String by project
 dependencies {
     implementation(enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}"))
     implementation(enforcedPlatform("${quarkusPlatformGroupId}:quarkus-camel-bom:${quarkusPlatformVersion}"))
-    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310")
     implementation("org.apache.camel.quarkus:camel-quarkus-aws2-sqs")
     implementation("org.apache.camel.quarkus:camel-quarkus-aws2-lambda")
     implementation("org.apache.camel.quarkus:camel-quarkus-aws2-s3")
